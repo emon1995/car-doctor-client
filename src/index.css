@@ -9,3 +9,7 @@
 .color-bg {
   @apply bg-[#FF3811];
 }
+
+.active {
+  @apply text-white bg-[#FF3811];
+}

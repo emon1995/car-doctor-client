@@ -1,24 +1,25 @@
 import React from "react";
 import logo from "../../../assets/logo.svg";
 import { Link } from "react-router-dom";
+import ActiveLink from "./ActiveLink";
 
 const Header = () => {
   const navItems = (
     <>
       <li>
-        <Link to={`/`}>Home</Link>
+        <ActiveLink to={`/`}>Home</ActiveLink>
       </li>
       <li tabIndex={0}>
-        <Link to={`/about`}>About</Link>
+        <ActiveLink to={`/about`}>About</ActiveLink>
       </li>
-      <li to={`/services`}>
-        <Link>Services</Link>
+      <li>
+        <ActiveLink to={`/services`}>Services</ActiveLink>
       </li>
-      <li to={`/blog`}>
-        <Link>Blog</Link>
+      <li>
+        <ActiveLink to={`/blog`}>Blog</ActiveLink>
       </li>
-      <li to={`/contact`}>
-        <Link>Contact</Link>
+      <li>
+        <ActiveLink to={`/contact`}>Contact</ActiveLink>
       </li>
     </>
   );

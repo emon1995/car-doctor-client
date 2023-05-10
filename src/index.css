@@ -13,3 +13,11 @@
 .active {
   @apply text-white bg-[#FF3811];
 }
+
+.text {
+  @apply text-error text-2xl font-bold;
+}
+
+.title {
+  @apply text-5xl font-bold;
+}

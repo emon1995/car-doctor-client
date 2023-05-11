@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import logo from "../../../assets/logo.svg";
 import { Link } from "react-router-dom";
 import ActiveLink from "./ActiveLink";
+import { AuthContext } from "../../../Provider/AuthProvider";
 
 const Header = () => {
+  const { user, logOutUser } = useContext(AuthContext);
+
+  const handleLogout = () => {
+    logOutUser()
+      .then(() => {})
+      .catch((err) => console.log(err.message));
+  };
+
   const navItems = (
     <>
       <li>
@@ -21,6 +30,19 @@ const Header = () => {
       <li>
         <ActiveLink to={`/contact`}>Contact</ActiveLink>
       </li>
+      {user?.email ? (
+        <>
+          <li>
+            <button onClick={handleLogout} className=" ">
+              Logout
+            </button>
+          </li>
+        </>
+      ) : (
+        <li>
+          <ActiveLink to={`/login`}>Login</ActiveLink>
+        </li>
+      )}
     </>
   );
 

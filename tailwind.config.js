@@ -2,7 +2,12 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        hero: "url('/src/assets/images/checkout/checkout.png')",
+        // 'footer-texture': "url('/img/footer-texture.png')",
+      },
+    },
   },
   daisyui: {
     themes: [

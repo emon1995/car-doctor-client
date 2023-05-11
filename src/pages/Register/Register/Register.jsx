@@ -3,11 +3,16 @@ import img from "../../../assets/images/login/login.svg";
 import img2 from "../../../assets/images/login/facebook.png";
 import img3 from "../../../assets/images/login/linkedin.png";
 import img4 from "../../../assets/images/login/search.png";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";
 
 const Register = () => {
   const { createUser, profile } = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const from = location.state;
+  // console.log(from);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,6 +27,7 @@ const Register = () => {
         const currentUser = result.user;
         console.log(result.user);
         profile(name, currentUser.photoURL);
+        navigate(from, { replace: true });
       })
       .catch((err) => {
         console.log(err.message);

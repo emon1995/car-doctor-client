@@ -33,6 +33,9 @@ const Header = () => {
       {user?.email ? (
         <>
           <li>
+            <ActiveLink to={`/myBooking`}>My Booking</ActiveLink>
+          </li>
+          <li>
             <button onClick={handleLogout} className=" ">
               Logout
             </button>

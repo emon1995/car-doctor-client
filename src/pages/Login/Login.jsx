@@ -3,11 +3,15 @@ import img from "../../assets/images/login/login.svg";
 import img2 from "../../assets/images/login/facebook.png";
 import img3 from "../../assets/images/login/linkedin.png";
 import img4 from "../../assets/images/login/search.png";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 
 const Login = () => {
   const { loginUser } = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const from = location?.state?.from?.pathname || "/";
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -20,6 +24,7 @@ const Login = () => {
       .then((result) => {
         const currentUser = result.user;
         console.log(result.user);
+        navigate(from, { replace: true });
       })
       .catch((err) => {
         console.log(err.message);
@@ -88,7 +93,7 @@ const Login = () => {
               </div>
               <p>
                 Have an account?{" "}
-                <Link className="color" to={`/register`}>
+                <Link className="color" to={`/register`} state={from}>
                   Sign Up
                 </Link>
               </p>

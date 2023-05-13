@@ -20,7 +20,7 @@ const MyBooking = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/bookings/${id}`, {
+        fetch(`https://car-doctor-server-puce.vercel.app/bookings/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -37,7 +37,7 @@ const MyBooking = () => {
   };
 
   const handleClickConfirm = (id) => {
-    fetch(`http://localhost:5000/bookings/${id}`, {
+    fetch(`https://car-doctor-server-puce.vercel.app/bookings/${id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
@@ -58,12 +58,15 @@ const MyBooking = () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/bookings?email=${user.email}`, {
-      method: "GET",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("car-access-token")}`,
-      },
-    })
+    fetch(
+      `https://car-doctor-server-puce.vercel.app/bookings?email=${user.email}`,
+      {
+        method: "GET",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("car-access-token")}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (!data.error) {
